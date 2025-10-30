@@ -6,7 +6,7 @@ COPY package.json ./
 RUN bun install
 COPY . .
 
-RUN bun build --target=bun --production --outdir=dist ./server/index.ts
+RUN bun build --target=bun --production --outdir=dist ./src/index.ts
 
 FROM debian:bookworm-slim AS runner
 WORKDIR /app
