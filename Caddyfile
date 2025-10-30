@@ -1,0 +1,4 @@
+bun.directory, www.bun.directory {
+    encode zstd gzip
+    reverse_proxy web:3000
+}
