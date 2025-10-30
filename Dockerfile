@@ -1,30 +1,10 @@
-# syntax=docker/dockerfile:1
-FROM oven/bun:1.3 AS builder
+FROM oven/bun:1.3
+
 WORKDIR /app
 
-# Copy dependency files
-COPY package.json bun.lock* ./
-
-# Install dependencies
-RUN bun install --frozen-lockfile
-
-# Copy source files
 COPY . .
 
-# Build the application
-RUN bun build --target=bun --production --outdir=dist ./src/index.ts
-
-FROM oven/bun:1.3 AS runner
-WORKDIR /app
-
-# Copy built files from builder stage
-COPY --from=builder /app/dist .
-
-# Set production environment
-ENV NODE_ENV=production
-ENV PORT=3000
-
+RUN bun install
+RUN bun run build
 EXPOSE 3000
-
-# Run the built application
-CMD ["bun", "index.js"]
+CMD ["bun", "src/index.ts"]
