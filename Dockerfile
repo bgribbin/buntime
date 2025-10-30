@@ -10,6 +10,5 @@ RUN bun run compile
 FROM debian:bookworm-slim AS runner
 WORKDIR /app
 COPY --from=builder /app/server .
-COPY --from=builder /app/public ./public
 EXPOSE 3000
 CMD ["./server"]

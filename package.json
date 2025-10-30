@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "bun --hot src/index.ts",
     "start": "NODE_ENV=production bun src/index.ts",
-    "build": "bun run build.ts",
-    "compile": "bun run build && bun build src/index.ts --compile --outfile server"
+    "build": "bun build --target=bun --production --outdir=dist ./src/index.ts",
+    "compile": "bun build --compile --minify --sourcemap ./src/index.ts --outfile server"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
