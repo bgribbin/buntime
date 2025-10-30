@@ -8,7 +8,7 @@ COPY . .
 
 RUN bun build --target=bun --production --outdir=dist ./src/index.ts
 
-FROM debian:bookworm-slim AS runner
+FROM oven/bun:1.3 AS runner
 WORKDIR /app
 COPY --from=builder /app/dist .
 
