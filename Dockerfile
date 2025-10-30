@@ -11,6 +11,6 @@ RUN bun build --target=bun --production --outdir=dist ./src/index.ts
 FROM debian:bookworm-slim AS runner
 WORKDIR /app
 COPY --from=builder /app/dist .
-COPY --from=builder /app/public ./public
+
 EXPOSE 3000
 CMD ["bun", "dist/index.js"]
