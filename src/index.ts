@@ -1,7 +1,7 @@
 import { serve } from 'bun';
 import index from './index.html';
 import { renderToReadableStream } from 'react-dom/server';
-import Component from '../ssr-react.tsx';
+import Component from './components/ssr-react.tsx';
 
 const server = serve({
   routes: {
